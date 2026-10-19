@@ -1,0 +1,26 @@
+[package]
+name = "checksu"
+version = "1.0.0"
+edition = "2021"
+authors = ["Exp1o5iveM1nd <t.me/goviraq>"]
+description = "Professional domain and subdomain reconnaissance scanner"
+
+[[bin]]
+name = "checksu"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1.47.1", features = ["full"] }
+reqwest = { version = "0.12.23", default-features = false, features = ["rustls-tls", "json", "gzip"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+futures = "0.3.31"
+terminal_size = "0.4.2"
+hickory-resolver = "0.24.1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
